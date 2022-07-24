@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Nunito+Sans&family=Play:wght@400;700&family=Splash&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main" >
+        <div class="box">
+            <p class="p">Tocando agora</p>
+            <img id="img" class="img" >
+            <audio id="audio" ></audio>
+            <div class="music-name" id="music-name" > </div>
+            <div class="artist" id="artist"> </div>
+            <div class="barra" >
+                <div class="timer" > 
+                    <span id="current-time" >0:00</span>
+                    <span id="total-duration" >0:00</span>
+                </div>
+                <div class="divprogress" >
+                    <input id="progress" value="0" min="1" max="100" type="range">
+                </div>
+            </div>    
+            <div class="player" >
+                <!-- <img class="arrows" id="repeat" src="/assets/repeat.png" alt=""> -->
+                <img class="arrows" id="back" src="/assets/previous.png" alt="">
+                <img class="play" id="play" src="/assets/play.png" alt="">
+                <img class="arrows" id="next" src="/assets/next.png" alt="">
+                <!-- <img class="arrows" id="playlist" src="/assets/playlist.png" alt=""> -->
+            </div>
+
+        </div>
+        <div class="sub" >
+            <p>"Sinta a Musica Fluir!"</p>
+        </div>
+    </div>
+    <div class="credits" >
+        <p>Criado e Desenvolvido por <a class="Rgit" href="">Rodrigo Costa</a><a href=""><img class="imggit" src="assets/github.png" alt=""></a></p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
