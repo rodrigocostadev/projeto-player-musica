@@ -25,10 +25,10 @@ let progress = document.getElementById("progress")
 
 let music = [
     {
-        image:"assets/allthesethingsihate.jpg",
-        name:"All These Things I Hate",
-        artist:"Bullet For My Valentine",
-        file:"assets/All These Things I Hate [Revolve Around Me].mp3"
+        image:"assets/burnitdown.jpg",
+        name:"Burn it Down",
+        artist:"Linkin Park",
+        file:"assets/Linkin Park   BURN IT DOWN (Official Music Audio).mp3",
     },
     {
         image:"assets/sofaraway2.jpg",
@@ -37,12 +37,11 @@ let music = [
         file:"assets/6. So Far Away.mp3",
     },
     {
-        image:"assets/burnitdown.jpg",
-        name:"Burn it Down",
-        artist:"Linkin Park",
-        file:"assets/Linkin Park   BURN IT DOWN (Official Music Audio).mp3",
+        image:"assets/allthesethingsihate.jpg",
+        name:"All These Things I Hate",
+        artist:"Bullet For My Valentine",
+        file:"assets/All These Things I Hate [Revolve Around Me].mp3"
     },
-
     {
         image:"assets/buriedalive2.jpg",
         name:"Buried Alive",
