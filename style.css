@@ -3,7 +3,7 @@ body{
     padding: 0;
     /* background-color: greenyellow; */
     /* background-color: darkred; */
-    background-image: linear-gradient(to bottom, darkred 50%, gray);
+    background-image: linear-gradient(to bottom, darkred 80%, black);
     display: grid;
     position: relative;
     margin: auto;
@@ -16,12 +16,14 @@ body{
     position: relative;
     margin: auto;
     justify-items: center;
-    grid-column-gap:70px
+    grid-column-gap:70px;
+    margin-bottom: 50px;
 }
 .sub{
     display: grid;
-    width: 350px;
-    /* background-color: red; */
+    width: 400px;
+    height: 90%;
+    /* background-color: rebeccapurple; */
     position: relative;
     text-align: center;
     align-content: center;
@@ -123,7 +125,11 @@ body{
     cursor: pointer;
 }
 
-.arrows:hover, .play:hover, .imggit:hover, .sub:hover{
+.arrows:hover, .play:hover, .imggit:hover{
+    transform: scale(1.3);
+    transition: 600ms;
+}
+.sub:hover{
     transform: scale(1.3);
     transition: 600ms;
 }
@@ -166,6 +172,7 @@ body{
 .imggit{
     /* background-color: red; */
     width: 50px;
+    margin-top: 18px;
     margin-left: 20px;
 }
 .Rgit{
@@ -173,7 +180,7 @@ body{
     font-size: 20px;
 }
 .Rgit:hover{
-    color: blue;
+    color: gray;
 }
 
 /* a{
