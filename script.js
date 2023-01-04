@@ -8,19 +8,21 @@
 // renderizar, descompilar o objeto para selecionar atraves do array
 // funçoes de play/pause , next, antes, lista, repeat, volume, selecionar a barra da musica
 
-let img = document.getElementById("img") /* imagem de fundo album */
-let tck = document.getElementById("music-name")
-let at = document.getElementById("artist")
-let rp = document.getElementById("repeat")
-let pl = document.getElementById("playlist")
+let image = document.getElementById("img") /* imagem de fundo album */
+let track = document.getElementById("music-name")
+let artistt = document.getElementById("artist")
+// let rp = document.getElementById("repeat")
+let volumee = document.getElementById("volume")
+let playlistt = document.getElementById("playlist")
 let currentMusic = document.getElementById("current-time")
 let totalMusic = document.getElementById("total-duration")
-let ad = document.getElementById("audio")
+let audio = document.getElementById("audio")
 
-let n = document.getElementById("next")
-let bk = document.getElementById("back")
-let ply = document.getElementById("play")
+let nextt = document.getElementById("next")
+let backk = document.getElementById("back")
+let play = document.getElementById("play")
 let progress = document.getElementById("progress")
+let divvolume = document.getElementById("modalvolume")
 
 
 let music = [
@@ -79,10 +81,10 @@ let index = 0;
 console.log(music)
 
 function render(){
-    img.src = music[index].image
-    ad.src = music[index].file
-    at.innerHTML = music[index].artist
-    tck.innerHTML = music[index].name
+    image.src = music[index].image
+    audio.src = music[index].file
+    artistt.innerHTML = music[index].artist
+    track.innerHTML = music[index].name
 }
 render()
 
@@ -100,27 +102,27 @@ function playPause(){
 }
 
 function goPause(){
-    ad.pause()
-    ply.src = "assets/play.png"
+    audio.pause()
+    play.src = "assets/play.png"
     isPlaying = false
 }
 
 function goPlay(){
-    ad.play()
-    ply.src = "assets/pause.png"
+    audio.play()
+    play.src = "assets/pause.png"
     isPlaying = true
 }
 
 // function goplay(){
-//     let ad = document.getElementById("audio")
-//     let ply = document.getElementById("play")
-//     if(ad.pause){
-//         ad.play()
-//         ply.src = "assets/play.png"
+//     let audio = document.getElementById("audio")
+//     let play = document.getElementById("play")
+//     if(audio.pause){
+//         audio.play()
+//         play.src = "assets/play.png"
 //     }
-//     else if (ad.play){
-//         ad.pause()
-//         ply.src = "assets/pause.png"
+//     else if (audio.play){
+//         audio.pause()
+//         play.src = "assets/pause.png"
 //     }
 // }
 
@@ -128,38 +130,35 @@ function goPlay(){
 
 //     if(pse == 0){
 //     function goplay(){
-//         ad.play()
-//         ply.src = "assets/pause.png"
+//         audio.play()
+//         play.src = "assets/pause.png"
 //         pse++
 //     }    
 // }
 
 //     else if (pse != 0 ){
 //     function gopause(){
-//         ad.pause()
-//         ply.src = "assets/play.png" 
+//         audio.pause()
+//         play.src = "assets/play.png" 
 //         pse--
 //     }    
 // }
 
 function changeprogress(){
-    ad.currentTime = progress.value / progress.max * ad.duration
+    audio.currentTime = progress.value / progress.max * audio.duration
     goPlay()
-    ad.play()
+    audio.play()
 } 
 
 function updateprogress(){
-    let porcent = Math.floor((ad.currentTime / ad.duration)*100)
+    let porcent = Math.floor((audio.currentTime / audio.duration)*100)
     progress.value = porcent
-    currentMusic.innerHTML = secondsInMinutes(Math.floor(ad.currentTime))
-    totalMusic.innerHTML = secondsInMinutes(Math.floor(ad.duration))
-    if(ad.currentTime == ad.duration){
+    currentMusic.innerHTML = secondsInMinutes(Math.floor(audio.currentTime))
+    totalMusic.innerHTML = secondsInMinutes(Math.floor(audio.duration))
+    if(audio.currentTime == audio.duration){
         next()
     }
 }
-
-
-
 
 function secondsInMinutes(second){
     let minutes= Math.floor(second/60)
@@ -172,7 +171,7 @@ function secondsInMinutes(second){
 
 function next (){
     index ++
-    // if (index > ad.length ){
+    // if (index > audio.length ){
     //     index = 0 }
     //     render()
     //     goPlay()    
@@ -185,7 +184,7 @@ function next (){
 }
 function back (){
     index --
-    // if (index < ad.length ){
+    // if (index < audio.length ){
     //     index = 0
     // }
     //     render()
@@ -197,10 +196,17 @@ function back (){
     render()
     goPlay()
 }
+function volume(){
+    divvolume.style.display = "block"
+    divvolume.onfocus()
+}
+divvolume.onblur = function(){
+    divvolume.style.display = "none"
+}
 
-
-n.addEventListener("click", next)
-bk.addEventListener("click", back)
-ply.addEventListener("click", playPause)
-ad.addEventListener("timeupdate", updateprogress)
+volumee.addEventListener("click",volume)
+nextt.addEventListener("click", next)
+backk.addEventListener("click", back)
+play.addEventListener("click", playPause)
+audio.addEventListener("timeupdate", updateprogress)
 progress.addEventListener("change", changeprogress)
