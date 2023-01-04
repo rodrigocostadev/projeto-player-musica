@@ -23,6 +23,7 @@ let backk = document.getElementById("back")
 let play = document.getElementById("play")
 let progress = document.getElementById("progress")
 let divvolume = document.getElementById("modalvolume")
+let volumeinput = document.getElementById("volumeinput")
 
 
 let music = [
@@ -85,6 +86,7 @@ function render(){
     audio.src = music[index].file
     artistt.innerHTML = music[index].artist
     track.innerHTML = music[index].name
+    // audio.volume = volumeinput.value
 }
 render()
 
@@ -197,11 +199,18 @@ function back (){
     goPlay()
 }
 function volume(){
+    
+    volumeinput.onchange = function(){
+        console.log(volumeinput.value)
+    }
     divvolume.style.display = "block"
-    divvolume.onfocus()
+
 }
-divvolume.onblur = function(){
+divvolume.onchange = function(){   
     divvolume.style.display = "none"
+    audio.volume = (volumeinput.value / 100) 
+    //divide por 100 pois o volume do audio aceita valor de 
+    //0,00 até 1,00 e os valores do input vão de o a 100 (esse ultimo definido por mim)
 }
 
 volumee.addEventListener("click",volume)
