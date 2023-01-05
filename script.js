@@ -24,6 +24,7 @@ let play = document.getElementById("play")
 let progress = document.getElementById("progress")
 let divvolume = document.getElementById("modalvolume")
 let volumeinput = document.getElementById("volumeinput")
+let modalplaylistt = document.getElementById("modalplaylist")
 
 
 let music = [
@@ -79,7 +80,7 @@ let music = [
 
 let index = 0;
 
-console.log(music)
+// console.log(music)
 
 function render(){
     image.src = music[index].image
@@ -213,6 +214,43 @@ divvolume.onchange = function(){
     //0,00 até 1,00 e os valores do input vão de o a 100 (esse ultimo definido por mim)
 }
 
+function playlist(){    
+
+    modalplaylistt.style.display = "block"
+
+
+    for ( let i = 0 ; i < music.length; i++){
+        let divmusic = document.createElement("div")
+        // let spanmusic = document.createElement("span")
+        // let divartista = document.createElement("span")
+        // let divduracao = document.createElement("span")
+        // let br = document.createElement("br")
+        // divmusic.setAttribute("id",[i])
+        // divmusic.setAttribute("class", "PLmusic")
+              // modalplaylistt.append(br)
+
+        divmusic.innerHTML= `<div id="${[i]}" class="PL">
+                                <div class="PLmusic"> ${music[i].name} </div>
+                                <span class="PLartist"> ${music[i].artist} </span>
+                                <span class="PLduracao"> ${[i]} </span>
+                             </div>`
+
+        modalplaylistt.append(divmusic)  
+        
+        divmusic.onclick = function(){
+            console.log(" vai descansar Rodrigo XD "+ [i])
+        }
+
+        console.log(music[i].name)        
+        
+    }
+    
+   
+
+
+}
+
+playlistt.addEventListener("click", playlist)
 volumee.addEventListener("click",volume)
 nextt.addEventListener("click", next)
 backk.addEventListener("click", back)
