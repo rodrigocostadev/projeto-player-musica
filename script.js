@@ -29,52 +29,61 @@ let modalplaylistt = document.getElementById("modalplaylist")
 
 let music = [
     {
-        image:"assets/burnitdown.jpg",
+        // image:"assets/burnitdown.jpg",
+        image:"assets/Linkin_Park_Burn_It_Down.jpg",
         name:"Burn it Down",
         artist:"Linkin Park",
         file:"assets/Linkin Park   BURN IT DOWN (Official Music Audio).mp3",
+        durationMusic:"3:53"
     },
     {
         image:"assets/sofaraway2.jpg",
         name:"So Far Away",
         artist:"Avenged Sevenfold",
         file:"assets/6. So Far Away.mp3",
+        durationMusic:"5:21"
     },
     {
         image:"assets/allthesethingsihate.jpg",
         name:"All These Things I Hate",
         artist:"Bullet For My Valentine",
-        file:"assets/All These Things I Hate [Revolve Around Me].mp3"
+        file:"assets/All These Things I Hate [Revolve Around Me].mp3",
+        durationMusic:"3:46"
     },
     {
         image:"assets/buriedalive2.jpg",
         name:"Buried Alive",
         artist:"Avenged Sevenfold",
         file:"assets/4. Buried Alive.mp3",
+        durationMusic:"6:44"
     },
     {
         image:"assets/mycurse.jpg",
         name:"My Curse",
         artist:"Killswicth Engage",
         file:"assets/Killswitch Engage   My Curse [OFFICIAL AUDIO].mp3",
+        durationMusic:"4:04"
     },
     {
         image:"assets/hailtotheking.jpg",
         name:"Hail to the king",
         artist:"Avenged Sevenfold",
         file:"assets/Hail To The King.mp3",
+        durationMusic:"5:02"
     },
     {
         image:"assets/mylastserenade.jpg",
         name:"My Last Serenade",
         artist:"Killswicth Engage",
         file:"assets/Killswitch Engage   My Last Serenade [OFFICIAL AUDIO].mp3",
+        durationMusic:"4:11"
     },
     {
         image:"assets/nightmare2.jpg",
         name:"Nightmare",
         artist:"Avenged Sevenfold",
         file:"assets/1. Nightmare.mp3",
+        durationMusic:"6:16"
     },
 ]
 
@@ -88,6 +97,8 @@ function render(){
     artistt.innerHTML = music[index].artist
     track.innerHTML = music[index].name
     // audio.volume = volumeinput.value
+    // audio.duration = audio.src
+    // console.log(audio.duration)
 }
 render()
 
@@ -114,6 +125,12 @@ function goPlay(){
     audio.play()
     play.src = "assets/pause.png"
     isPlaying = true
+
+    // console.log(music.audio[index].duration)
+    // let aa = secondsInMinutes(Math.floor(audio.src.duration))
+    // console.log(aa)
+    // console.log(audio.src.duration)
+    // console.log()
 }
 
 // function goplay(){
@@ -212,7 +229,29 @@ divvolume.onchange = function(){
     audio.volume = (volumeinput.value / 100) 
     //divide por 100 pois o volume do audio aceita valor de 
     //0,00 até 1,00 e os valores do input vão de o a 100 (esse ultimo definido por mim)
+
+    if(audio.volume >= 0.01 ){
+        volumee.src = "assets/medium-volume.png"
+        // volumee.style.width = "40px"
+        // volumee.style.height = "40px"
+    }
+    else if(audio.volume = 0.0 ){
+        // volumee.src = "assets/mute.png"
+        volumee.src = "assets/mute-speaker.png"
+        // volumee.style.width = "30px"
+        // volumee.style.height = "30px"
+    }
 }
+function closevolume(){
+    // divvolume.style.display = "none"
+    volumee.src = "assets/mute-speaker.png"
+
+    audio.volume = 0
+    // volumee.src = "assets/mute.png"
+    // volumee.style.width = "30px"
+    // volumee.style.height = "30px"
+}
+
 
 function playlist(){    
 
@@ -221,37 +260,63 @@ function playlist(){
 
     for ( let i = 0 ; i < music.length; i++){
         let divmusic = document.createElement("div")
+        let buttonclose = document.getElementById("closePL")
+        // let musiclist = document.getElementById([i])
+        // let teste1 = secondsInMinutes(Math.floor(audio.duration))
+        // console.log(music.length[i])
+        // console.log(audio.duration[music.length])
+        //     let bb = secondsInMinutes(Math.floor(audio.duration))
+        // console.log(music.bb[i])
+
+        // music.forEach(function(){
+        //     let teste1 = secondsInMinutes(Math.floor(audio.duration[music.length]))
+        //     console.log(teste1 + " esse teste1")
+        // })
+
         // let spanmusic = document.createElement("span")
         // let divartista = document.createElement("span")
         // let divduracao = document.createElement("span")
         // let br = document.createElement("br")
-        // divmusic.setAttribute("id",[i])
+        divmusic.setAttribute("id",[i])
         // divmusic.setAttribute("class", "PLmusic")
               // modalplaylistt.append(br)
 
-        divmusic.innerHTML= `<div id="${[i]}" class="PL">
-                                <div class="PLmusic"> ${music[i].name} </div>
-                                <span class="PLartist"> ${music[i].artist} </span>
-                                <span class="PLduracao"> ${[i]} </span>
-                             </div>`
+        divmusic.innerHTML= `<hr>
+                                <div class="PL">
+                                    <div class="PLmusic"> ${music[i].name} </div>
+                                    <span class="PLartist"> ${music[i].artist} </span>
+                                    <span class="PLduracao"> ${music[i].durationMusic} </span>
+                                </div>`
 
         modalplaylistt.append(divmusic)  
         
         divmusic.onclick = function(){
-            console.log(" vai descansar Rodrigo XD "+ [i])
+            // console.log(" vai descansar Rodrigo XD "+ [i])
+            index = [i]
+            render()
+            goPlay()
+            modalplaylistt.style.display = "none"    
+        }
+        buttonclose.onclick = function(){
+            modalplaylistt.style.display = "none"
         }
 
-        console.log(music[i].name)        
-        
-    }
+        // console.log(music[i].name)       
+    }  
     
-   
-
-
+}
+function closeplaylist () {
+    modalplaylistt.style.display = "none"    
 }
 
+
+
+
+
 playlistt.addEventListener("click", playlist)
+playlistt.addEventListener("dblclick", closeplaylist)
 volumee.addEventListener("click",volume)
+volumee.addEventListener("dblclick", closevolume)
 nextt.addEventListener("click", next)
 backk.addEventListener("click", back)
 play.addEventListener("click", playPause)
