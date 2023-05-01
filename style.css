@@ -1,9 +1,10 @@
 body{
     margin: 0;
     padding: 0;
+    padding-bottom:50px;
     /* background-color: greenyellow; */
     /* background-color: darkred; */
-    background-image: linear-gradient(to bottom, darkred 80%, black);
+    background-image: linear-gradient(to bottom, darkred 70%, black );
     display: grid;
     position: relative;
     margin: auto;
