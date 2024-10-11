@@ -1,9 +1,10 @@
 body{
     margin: 0;
     padding: 0;
+    height: 100vh;
     /* background-color: greenyellow; */
     /* background-color: darkred; */
-    background-image: linear-gradient(to bottom, darkred 80%, black);
+    background-image: linear-gradient(to bottom, darkred 60%, black);
     display: grid;
     position: relative;
     margin: auto;
@@ -39,7 +40,7 @@ hr{
 .box{
     /* display: grid; */
     width: 350px;
-    height: 600px;
+    height: 590px;
     /* width: 30%;
     height: 100%; */
     background-color: white;
@@ -268,11 +269,6 @@ hr{
     color: gray;
 }
 
-
-/* a{
-    background-color: pink;
-} */
-
 @media screen and (max-width:900px){
     .main{
         grid-column-gap: 0px;
@@ -287,6 +283,10 @@ hr{
 }
 
 @media (max-width:800px){
+    body{
+        height: 100%;
+        background-image: linear-gradient(to bottom, darkred 80%, black);
+    }
     .main{
         grid-template:auto auto / 1fr;
     }
